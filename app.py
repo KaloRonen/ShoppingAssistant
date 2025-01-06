@@ -3,11 +3,9 @@ from flask_socketio import SocketIO, emit
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-app = Flask(__name__)
+app = Flask(__name__,    template_folder='.', static_url_path='',  static_folder='.')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-app.config['SQLALCHEMY_BINDS'] = {
-    'default': 'sqlite:///shopping_lists.db'
-}
+app.config['SQLALCHEMY_BINDS'] = {'default': 'sqlite:///shopping_lists.db'}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'your_secret_key'
 db = SQLAlchemy(app)
